@@ -10,11 +10,11 @@ LED_DisPlay::~LED_DisPlay()
 
 }
 
-void LED_DisPlay::begin(uint8_t LEDNumbre)
+void LED_DisPlay::begin(uint8_t LEDNumber)
 {
-    FastLED.addLeds<WS2812, DATA_PIN>(_ledbuff, LEDNumbre);
+    FastLED.addLeds<WS2812, DATA_PIN, GRB>(_ledbuff, LEDNumber);
     _xSemaphore = xSemaphoreCreateMutex();
-    _numberled = LEDNumbre;
+    _numberled = LEDNumber;
 }
 
 void LED_DisPlay::run(void *data)
@@ -23,10 +23,10 @@ void LED_DisPlay::run(void *data)
 
     for (int num = 0; num < NUM_LEDS; num++)
     {
-        _ledbuff[num] = 0x000000;
+        _ledbuff[num] = CRGB::Black;
     }
+    FastLED.setBrightness(Brightness);
     FastLED.show();
-    FastLED.setBrightness(20);
 
     while (1)
     {
@@ -93,8 +93,8 @@ void LED_DisPlay::_displaybuff(uint8_t *buffptr, int8_t offsetx, int8_t offsety)
     {
         for (int y = 0; y < 5; y++)
         {
-            _ledbuff[x + y * 5].raw[1] = buffptr[2 + ((setdatax + x) % xsize + ((setdatay + y) % ysize) * xsize) * 3 + 0];
-            _ledbuff[x + y * 5].raw[0] = buffptr[2 + ((setdatax + x) % xsize + ((setdatay + y) % ysize) * xsize) * 3 + 1];
+            _ledbuff[x + y * 5].raw[0] = buffptr[2 + ((setdatax + x) % xsize + ((setdatay + y) % ysize) * xsize) * 3 + 0];
+            _ledbuff[x + y * 5].raw[1] = buffptr[2 + ((setdatax + x) % xsize + ((setdatay + y) % ysize) * xsize) * 3 + 1];
             _ledbuff[x + y * 5].raw[2] = buffptr[2 + ((setdatax + x) % xsize + ((setdatay + y) % ysize) * xsize) * 3 + 2];
         }
     }
@@ -134,8 +134,8 @@ void LED_DisPlay::displaybuff(uint8_t *buffptr, int8_t offsetx, int8_t offsety)
     {
         for (int y = 0; y < 5; y++)
         {
-            _ledbuff[x + y * 5].raw[1] = buffptr[2 + ((setdatax + x) % xsize + ((setdatay + y) % ysize) * xsize) * 3 + 0];
-            _ledbuff[x + y * 5].raw[0] = buffptr[2 + ((setdatax + x) % xsize + ((setdatay + y) % ysize) * xsize) * 3 + 1];
+            _ledbuff[x + y * 5].raw[0] = buffptr[2 + ((setdatax + x) % xsize + ((setdatay + y) % ysize) * xsize) * 3 + 0];
+            _ledbuff[x + y * 5].raw[1] = buffptr[2 + ((setdatax + x) % xsize + ((setdatay + y) % ysize) * xsize) * 3 + 1];
             _ledbuff[x + y * 5].raw[2] = buffptr[2 + ((setdatax + x) % xsize + ((setdatay + y) % ysize) * xsize) * 3 + 2];
         }
     }
@@ -196,7 +196,7 @@ void LED_DisPlay::clear()
     xSemaphoreTake(_xSemaphore, portMAX_DELAY);
     for (int8_t i = 0; i < NUM_LEDS; i++)
     {
-        _ledbuff[i] = 0;
+        _ledbuff[i] = CRGB::Black;
     }
     _mode = kAnmiation_frush;
     xSemaphoreGive(_xSemaphore);

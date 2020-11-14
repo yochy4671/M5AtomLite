@@ -47,7 +47,7 @@ public:
     LED_DisPlay();
     ~LED_DisPlay();
 
-    void begin(uint8_t LEDNumbre = NUM_LEDS);
+    void begin(uint8_t LEDNumber = NUM_LEDS);
     void run(void *data);
 
     void animation(uint8_t *buffptr, uint8_t amspeed, uint8_t ammode, int64_t amcount = -1);
