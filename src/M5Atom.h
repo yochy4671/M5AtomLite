@@ -53,7 +53,6 @@
 #include <Wire.h>
 #include <FastLED.h>
 
-#include "utility/MPU6886.h"
 #include "utility/Button.h"
 #include "utility/LED_DisPlay.h"
 
@@ -67,7 +66,6 @@ public:
 	M5Atom(/* args */);
 	~M5Atom();
 
-	MPU6886 IMU;
     LED_DisPlay dis;
 
 	Button Btn = Button(39, true, 10);
