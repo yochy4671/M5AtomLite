@@ -1,19 +1,19 @@
 // Copyright (c) M5Stack. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-#include "M5Atom.h"
+#include "M5AtomLite.h"
 
-M5Atom::M5Atom()
+M5AtomLite::M5AtomLite()
 {
 
 }
 
-M5Atom::~M5Atom()
+M5AtomLite::~M5AtomLite()
 {
 
 }
 
-void M5Atom::begin(bool SerialEnable , bool I2CEnable , bool DisplayEnable )
+void M5AtomLite::begin(bool SerialEnable , bool I2CEnable , bool DisplayEnable )
 {
 	if( _isInited ) return;
 
@@ -28,7 +28,7 @@ void M5Atom::begin(bool SerialEnable , bool I2CEnable , bool DisplayEnable )
 		Serial.begin(115200);
 		Serial.flush();
 		delay(50);
-		Serial.println("M5Atom initializing...OK");
+		Serial.println("M5AtomLite initializing...OK");
 	}
 
 	if( DisplayEnable )
@@ -43,9 +43,9 @@ void M5Atom::begin(bool SerialEnable , bool I2CEnable , bool DisplayEnable )
 
 }
 
-void M5Atom::update()
+void M5AtomLite::update()
 {
 	M5.Btn.read();
 }
 
-M5Atom M5;
+M5AtomLite M5;

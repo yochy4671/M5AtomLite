@@ -3,16 +3,16 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 /**
  * \par Copyright (C), 2016-2017, M5Stack
- * \class M5Stack
- * \brief   M5Stack library.
- * @file    M5Stack.h
+ * \class M5AtomLite
+ * \brief   M5AtomLite library.
+ * @file    M5AtomLite.h
  * @author  M5Stack
  * @version V0.2.4
  * @date    2018/10/29
- * @brief   Header for M5Stack.cpp module
+ * @brief   Header for M5AtomLite.cpp module
  *
  * \par Description
- * This file is a drive for M5Stack core.
+ * This file is a drive for M5AtomLite core.
  *
  * \par Method List:
  *
@@ -42,8 +42,8 @@
  */
 // #define ESP32
 
-#ifndef _M5ATOM_H_
-#define _M5ATOM_H_
+#ifndef _M5ATOMLITE_H_
+#define _M5ATOMLITE_H_
 
 #if defined(ESP32)
 
@@ -57,14 +57,14 @@
 #include "utility/LED_DisPlay.h"
 
 #define FASTLED_INTERNAL
-class M5Atom
+class M5AtomLite
 {
 private:
 	bool _isInited = false;
 	/* data */
 public:
-	M5Atom(/* args */);
-	~M5Atom();
+	M5AtomLite(/* args */);
+	~M5AtomLite();
 
     LED_DisPlay dis;
 
@@ -74,7 +74,7 @@ public:
 	void update();
 };
 
-extern M5Atom M5;
+extern M5AtomLite M5;
 
 
 #else
