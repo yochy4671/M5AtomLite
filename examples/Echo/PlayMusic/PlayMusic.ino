@@ -8,7 +8,7 @@
  * -partition Scheme: No OTA
  * 
 ****************************************************************/
-#include "M5Atom.h"
+#include "M5AtomLite.h"
 #include <driver/i2s.h>
 
 extern const unsigned char audio_chocobo[1164240];

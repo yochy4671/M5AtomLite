@@ -7,7 +7,7 @@
  * -Upload Speed: 115200 / 750000 / 1500000
  * 
 ****************************************************************/
-#include "M5Atom.h"
+#include "M5AtomLite.h"
 #include <WiFi.h>
 #include <driver/i2s.h>
 #include <HTTPClient.h>

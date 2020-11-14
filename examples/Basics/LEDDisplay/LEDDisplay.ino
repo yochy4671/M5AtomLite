@@ -8,13 +8,11 @@
  * -Upload Speed: 115200 / 750000 / 1500000
  * 
 ****************************************************************/
-#include "M5Atom.h"
+#include "M5AtomLite.h"
 
 /* this Example only for M5Atom Matrix */
 
 extern const unsigned char AtomImageData[375 + 2];
-
-bool IMU6886Flag = false;
 
 void setup()
 {
