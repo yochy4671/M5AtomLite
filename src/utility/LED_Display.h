@@ -6,21 +6,13 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 
-#define NUM_LEDS 25
+#define NUM_LEDS 1
 #define DATA_PIN 27
 
 class LED_DisPlay : public Task
 {
 private:
     CRGB _ledbuff[NUM_LEDS];
-    uint8_t _numberled;
-
-    uint8_t _mode;
-    uint16_t _am_speed;
-    uint8_t _am_mode;
-    int32_t _count_x, _count_y;
-    int32_t _am_count = -1;
-    uint8_t *_am_buffptr;
 
     SemaphoreHandle_t _xSemaphore = NULL;
 
